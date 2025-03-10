@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kayraakbas <kayraakbas@student.42.fr>      +#+  +:+       +#+        */
+/*   By: omakbas <omakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 17:37:27 by kayraakbas        #+#    #+#             */
-/*   Updated: 2024/10/25 00:08:31 by kayraakbas       ###   ########.fr       */
+/*   Updated: 2024/10/25 19:23:28 by omakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-size_t	ft_strlen(const char *s)
-{
-	int i = 0;
-	while (s[i])
-		i++;
-	return i;
-}
 
 char	*ft_strrchr(const char *s, int c)
 {

@@ -6,7 +6,7 @@
 /*   By: kayraakbas <kayraakbas@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 22:04:59 by kayraakbas        #+#    #+#             */
-/*   Updated: 2025/02/15 19:30:09 by kayraakbas       ###   ########.fr       */
+/*   Updated: 2024/11/06 22:06:25 by kayraakbas       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdarg.h>
 # include <unistd.h>
+# include <stdio.h>
 
 int				ft_printf(const char *str, ...);
 int				ft_putchar(char c);

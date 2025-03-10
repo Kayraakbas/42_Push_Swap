@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kayraakbas <kayraakbas@student.42.fr>      +#+  +:+       +#+        */
+/*   By: omakbas <omakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:11:15 by omakbas           #+#    #+#             */
-/*   Updated: 2024/10/24 20:40:18 by kayraakbas       ###   ########.fr       */
+/*   Updated: 2024/10/25 20:24:07 by omakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,20 @@ static int	count_words(char *str, char c)
 {
 	int	i;
 	int	words;
+	int	in_word;
 
 	words = 0;
 	i = 0;
+	in_word = 0;
 	while (str[i] != '\0')
 	{
-		if (char_is_separator(str[i], c) == 1)
+		if (!char_is_separator(str[i], c) && in_word == 0)
+		{
 			words++;
+			in_word = 1;
+		}
+		else if (char_is_separator(str[i], c))
+			in_word = 0;
 		i++;
 	}
 	return (words);
@@ -82,7 +89,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	words = count_words((char *)s, c);
+	words = count_words((char *)s, (c));
 	matrix = (char **)malloc(sizeof(char *) * (words + 1));
 	if (!matrix)
 		return (NULL);

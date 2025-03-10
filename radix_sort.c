@@ -6,36 +6,35 @@
 /*   By: kayraakbas <kayraakbas@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 16:20:57 by kayraakbas        #+#    #+#             */
-/*   Updated: 2025/03/10 00:40:13 by kayraakbas       ###   ########.fr       */
+/*   Updated: 2025/03/10 22:18:07 by kayraakbas       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	max_bits(node **stack)
+int	max_bits(t_node **stack)
 {
-    node	*head;
-    int		max;
-    int		max_bits;
+	t_node	*head;
+	int		max;
+	int		max_bits;
 
-    if (!stack || !*stack)
-        return (0);
-        
-    head = *stack;
-    max = head->index;
-    max_bits = 0;
-    while (head)
-    {
-        if (head->index > max)
-            max = head->index;
-        head = head->next;
-    }
-    while ((max >> max_bits) != 0)
-        max_bits++;
-    return (max_bits);
+	if (!stack || !*stack)
+		return (0);
+	head = *stack;
+	max = head->index;
+	max_bits = 0;
+	while (head)
+	{
+		if (head->index > max)
+			max = head->index;
+		head = head->next;
+	}
+	while ((max >> max_bits) != 0)
+		max_bits++;
+	return (max_bits);
 }
 
-void	sort_three(node **head)
+void	sort_three(t_node **head)
 {
 	int	biggest;
 
@@ -47,7 +46,8 @@ void	sort_three(node **head)
 	if ((*head)->index > (*head)->next->index)
 		swap_a(head);
 }
-void	sort_five(node **stack_a, node **stack_b)
+
+void	sort_five(t_node **stack_a, t_node **stack_b)
 {
 	int	size;
 
@@ -66,35 +66,35 @@ void	sort_five(node **stack_a, node **stack_b)
 		swap_a(stack_a);
 }
 
-void	radix_sort(node **stack_a, node **stack_b)
+void	radix_sort(t_node **stack_a, t_node **stack_b)
 {
-    int		i;
-    int		j;
-    int		size;
-    int		max_bits_len;
+	int	i;
+	int	j;
+	int	size;
+	int	max_bits_len;
 
-    if (!stack_a || !*stack_a)
-        return;
-    i = 0;
-    size = ft_lstsize(*stack_a);
-    max_bits_len = max_bits(stack_a);
-    while (i < max_bits_len)
-    {
-        j = 0;
-        while (*stack_a && j++ < size)
-        {
-            if (((*stack_a)->index >> i) & 1)
-                rotate_a(stack_a);
-            else
-                push_b(stack_a, stack_b);
-        }
-        while (*stack_b)
-            push_a(stack_a, stack_b);
-        i++;
-    }
+	if (!stack_a || !*stack_a)
+		return ;
+	i = 0;
+	size = ft_lstsize(*stack_a);
+	max_bits_len = max_bits(stack_a);
+	while (i < max_bits_len)
+	{
+		j = 0;
+		while (*stack_a && j++ < size)
+		{
+			if (((*stack_a)->index >> i) & 1)
+				rotate_a(stack_a);
+			else
+				push_b(stack_a, stack_b);
+		}
+		while (*stack_b)
+			push_a(stack_a, stack_b);
+		i++;
+	}
 }
 
-void	sort_stack(node **stack_a, node **stack_b)
+void	sort_stack(t_node **stack_a, t_node **stack_b)
 {
 	int	size;
 

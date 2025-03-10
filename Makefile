@@ -21,7 +21,7 @@ CFLAGS=-Wall -Wextra -Werror
 all: $(PUSH_SWAP) 
 
 $(PUSH_SWAP): $(FT_PRINTF) $(LIBFT) $(PUSH_SWAP).c
-	$(CC) $(CFLAGS) $(PUSH_SWAP).c -g -O0 -o $(PUSH_SWAP) $(FT_PRINTF_LIB_FLAGS) $(LIBFT_LIB_FLAGS) rules.c helper_funcs.c radix_sort.c index.c
+	$(CC) $(CFLAGS) $(PUSH_SWAP).c -g -O0 -o $(PUSH_SWAP) $(FT_PRINTF_LIB_FLAGS) $(LIBFT_LIB_FLAGS) utils.c radix_sort.c index.c push_rules.c rotate_rules.c swap_rules.c reverse_rotate_rules.c	linked_list_utils.c
 
 $(FT_PRINTF):
 	make -s -C $(FT_PRINTF_PATH)

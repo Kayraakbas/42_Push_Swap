@@ -3,86 +3,84 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kayraakbas <kayraakbas@student.42.fr>      +#+  +:+       +#+        */
+/*   By: omakbas <omakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 19:14:19 by omakbas           #+#    #+#             */
-/*   Updated: 2024/10/24 20:37:35 by kayraakbas       ###   ########.fr       */
+/*   Updated: 2024/10/25 20:29:57 by omakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int numLen(int n)
+static int	num_len(int n)
 {
-	int len = 0;
-	int num = n;
-	while (num)
+	int	len;
+
+	len = 0;
+	if (n <= 0)
+		len = 1;
+	while (n != 0)
 	{
-		num = num / 10;
+		n /= 10;
 		len++;
 	}
-	return len;
+	return (len);
 }
 
-static char get_sign(int *num)
+static char	*allocate_string(int len)
 {
-	if (*num < 0)
-	{
-		*num = -(*num);
-		return '-';
-	}
-	return '\0';
-}
+	char	*str;
 
-static char *allocate_string(int len, char sign)
-{
-	char *str;
-	int size = len + 1;
-	
-	if (sign)
-		size++;
-	str = (char *)malloc(size * sizeof(char));
+	str = (char *)malloc((len + 1) * sizeof(char));
 	if (str)
-		str[size - 1] = '\0';
-	return str;
+		str[len] = '\0';
+	return (str);
 }
 
-static void fill_string(char *str, int num, int len, int stopPos)
+static void	fill_string(char *str, int num, int len)
 {
-	int digit;
-
-	while (len >= stopPos)
+	while (len-- > 0)
 	{
-		digit = num % 10;
-		str[len] = 48 + digit;
-		num = num / 10;
-		len--;
+		str[len] = '0' + (num % 10);
+		num /= 10;
 	}
 }
 
-char *ft_itoa(int n)
+static char	*handle_zero_case(void)
 {
-	int num = n;
-	int len;
-	char sign = get_sign(&num);
-	int stopPos = sign ? 1 : 0;
+	char	*str;
+
+	str = (char *)malloc(2 * sizeof(char));
+	if (!str)
+		return (NULL);
+	str[0] = '0';
+	str[1] = '\0';
+	return (str);
+}
+
+char	*ft_itoa(int n)
+{
+	int		len;
+	int		is_negative;
+	char	*str;
 
 	if (n == 0)
-	{
-		char *str = (char *)malloc(2 * sizeof(char));
-		if (!str)
-			return NULL;
-		str[0] = '0';
-		str[1] = '\0';
-		return str;
-	}
-
-	len = numLen(num);
-	char *str = allocate_string(len, sign);
+		return (handle_zero_case());
+	is_negative = (n < 0);
+	len = num_len(n);
+	str = allocate_string(len);
 	if (!str)
-		return NULL;
-	if (sign)
-		str[0] = sign;
-	fill_string(str, num, len + stopPos - 1, stopPos);
-	return str;
+		return (NULL);
+	if (is_negative)
+	{
+		str[0] = '-';
+		if (n == -2147483648)
+		{
+			str[--len] = '8';
+			n /= 10;
+		}
+		n = -n;
+	}
+	fill_string(str + is_negative, n, len - is_negative);
+	return (str);
 }

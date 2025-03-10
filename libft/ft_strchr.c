@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kayraakbas <kayraakbas@student.42.fr>      +#+  +:+       +#+        */
+/*   By: omakbas <omakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 19:00:37 by kayraakbas        #+#    #+#             */
-/*   Updated: 2024/10/24 20:40:35 by kayraakbas       ###   ########.fr       */
+/*   Updated: 2024/10/25 20:02:09 by omakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	char			*str;
+	const char		*str;
 	unsigned char	letter;
 	int				len;
 
 	len = 0;
-	str = (char *) s;
+	str = s;
 	letter = c;
 	while (str[len])
 	{
 		if (str[len] == letter)
-			return (&str[len]);
+			return ((char *) &str[len]);
 		len++;
 	}
-	return (NULL);
+	if (letter == '\0')
+		return ((char *)&str[len]);
+	return (0);
 }

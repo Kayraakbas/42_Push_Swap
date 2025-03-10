@@ -6,7 +6,7 @@
 /*   By: kayraakbas <kayraakbas@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:24:41 by kayraakbas        #+#    #+#             */
-/*   Updated: 2025/02/15 18:43:28 by kayraakbas       ###   ########.fr       */
+/*   Updated: 2025/03/10 23:09:22 by kayraakbas       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,9 @@ static int	is_formated_chr(const char format, va_list args)
 {
 	int	print_len;
 
-	print_len = 0;
 	print_len = handle_basic_formats(format, args);
 	print_len += handle_hex_pointer(format, args);
 	return (print_len);
-}
-
-static	int	is_valid_format_char(const char format)
-{
-	return (format == 'c' || format == 's' || format == 'd' || format == 'i'
-		|| format == 'u' || format == '%' || format == 'x'
-		|| format == 'X' || format == 'p');
 }
 
 int	ft_printf(const char *str, ...)
@@ -70,11 +62,11 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			i++;
-			if (is_valid_format_char(str[i]))
-				print_len += is_formated_chr(str[i], args);
-			else
-				print_len += write(1, &str[i], 1);
+			if (str[i + 1] != 'c' || str[i + 1] != 's' || str[i + 1] != 'd'
+				|| str[i + 1] != 'i' || str[i + 1] != 'u' || str[i + 1] != 'x'
+				|| str[i + 1] != 'X' || str[i + 1] != 'p')
+				return (-1);
+			print_len += is_formated_chr(str[++i], args);
 		}
 		else
 			print_len += write(1, &str[i], 1);
