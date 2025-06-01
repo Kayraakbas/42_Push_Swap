@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kayraakbas <kayraakbas@student.42.fr>      +#+  +:+       +#+        */
+/*   By: omakbas <omakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 20:29:00 by kayraakbas        #+#    #+#             */
-/*   Updated: 2025/03/10 22:55:52 by kayraakbas       ###   ########.fr       */
+/*   Created: 2025/03/14 18:30:40 by omakbas           #+#    #+#             */
+/*   Updated: 2025/03/22 14:51:10 by omakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ void	handle_error_and_free_mat(char **mat)
 
 void	exit_error(const char *msg)
 {
-	ft_printf("%s\n", msg);
-	exit(EXIT_FAILURE);
+	(void) msg;
+	write(STDERR_FILENO, "Error\n", 6);
+	exit (1);
 }
 
 int	is_valid_number(const char *str)
@@ -72,6 +73,8 @@ int	check_arg_format(char **mat)
 	while (mat[i])
 	{
 		if (!is_valid_number(mat[i]))
+			return (1);
+		if (ft_atoi(mat[i]) > INT_MAX || ft_atoi(mat[i]) < INT_MIN)
 			return (1);
 		i++;
 	}

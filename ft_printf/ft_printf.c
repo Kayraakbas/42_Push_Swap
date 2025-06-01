@@ -6,7 +6,7 @@
 /*   By: kayraakbas <kayraakbas@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:24:41 by kayraakbas        #+#    #+#             */
-/*   Updated: 2025/03/10 23:09:22 by kayraakbas       ###   ########.fr       */
+/*   Updated: 2024/11/07 14:54:19 by kayraakbas       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,7 @@ int	ft_printf(const char *str, ...)
 	while (str[i])
 	{
 		if (str[i] == '%')
-		{
-			if (str[i + 1] != 'c' || str[i + 1] != 's' || str[i + 1] != 'd'
-				|| str[i + 1] != 'i' || str[i + 1] != 'u' || str[i + 1] != 'x'
-				|| str[i + 1] != 'X' || str[i + 1] != 'p')
-				return (-1);
 			print_len += is_formated_chr(str[++i], args);
-		}
 		else
 			print_len += write(1, &str[i], 1);
 		i++;

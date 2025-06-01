@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kayraakbas <kayraakbas@student.42.fr>      +#+  +:+       +#+        */
+/*   By: omakbas <omakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 12:48:51 by kayraakbas        #+#    #+#             */
-/*   Updated: 2025/03/10 22:58:15 by kayraakbas       ###   ########.fr       */
+/*   Created: 2025/03/14 18:28:38 by omakbas           #+#    #+#             */
+/*   Updated: 2025/03/20 20:30:07 by omakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <stdarg.h>
+# include <limits.h>
 # include "../ft_printf/ft_printf.h"
 # include "../libft/libft.h"
 
-// Struct Definition
 typedef struct s_node
 {
 	int				val;
@@ -51,6 +51,8 @@ int		ft_lstsize(t_node *head);
 void	exit_error(const char *msg);
 int		sorted(t_node **head);
 int		find_biggest(t_node *head);
+void	check_duplicates(t_node **stack);
+void	is_argv_null(char **argv);
 
 void	radix_sort(t_node **stack_a, t_node **stack_b);
 int		max_bits(t_node **stack);

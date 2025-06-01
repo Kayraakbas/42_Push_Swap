@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate_rules.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kayraakbas <kayraakbas@student.42.fr>      +#+  +:+       +#+        */
+/*   By: omakbas <omakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/10 22:12:16 by kayraakbas        #+#    #+#             */
-/*   Updated: 2025/03/10 22:15:07 by kayraakbas       ###   ########.fr       */
+/*   Created: 2025/03/14 18:31:24 by omakbas           #+#    #+#             */
+/*   Updated: 2025/03/14 18:31:27 by omakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

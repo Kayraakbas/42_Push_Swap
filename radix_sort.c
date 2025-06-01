@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   radix_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kayraakbas <kayraakbas@student.42.fr>      +#+  +:+       +#+        */
+/*   By: omakbas <omakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/07 16:20:57 by kayraakbas        #+#    #+#             */
-/*   Updated: 2025/03/10 22:18:07 by kayraakbas       ###   ########.fr       */
+/*   Created: 2025/03/14 18:31:39 by omakbas           #+#    #+#             */
+/*   Updated: 2025/03/22 14:21:17 by omakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	sort_three(t_node **head)
 		swap_a(head);
 }
 
-void	sort_five(t_node **stack_a, t_node **stack_b)
+void	radix_sort_pre(t_node **stack_a, t_node **stack_b)
 {
 	int	size;
 
@@ -73,7 +73,7 @@ void	radix_sort(t_node **stack_a, t_node **stack_b)
 	int	size;
 	int	max_bits_len;
 
-	if (!stack_a || !*stack_a)
+	if ((!stack_a || !*stack_a) || sorted(stack_a))
 		return ;
 	i = 0;
 	size = ft_lstsize(*stack_a);
@@ -101,10 +101,15 @@ void	sort_stack(t_node **stack_a, t_node **stack_b)
 	size = ft_lstsize(*stack_a);
 	if (!sorted(stack_a) && size <= 3)
 		sort_three(stack_a);
-	else if (!sorted(stack_a) && size <= 5)
-		sort_five(stack_a, stack_b);
-	else if (!sorted(stack_a))
+	else if (size <= 50 && size > 3)
+	{
+		radix_sort_pre(stack_a, stack_b);
 		radix_sort(stack_a, stack_b);
+	}
+	else if (size > 50)
+	{
+		radix_sort(stack_a, stack_b);
+	}
 	else
 	{
 		free_list(stack_a);

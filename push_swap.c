@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kayraakbas <kayraakbas@student.42.fr>      +#+  +:+       +#+        */
+/*   By: omakbas <omakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 12:48:55 by kayraakbas        #+#    #+#             */
-/*   Updated: 2025/03/10 22:29:21 by kayraakbas       ###   ########.fr       */
+/*   Created: 2025/03/14 18:32:14 by omakbas           #+#    #+#             */
+/*   Updated: 2025/03/22 14:51:33 by omakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ char	**get_argument_matrix(char **argv)
 	if (contains_space(argv[1]))
 	{
 		mat = ft_split(argv[1], ' ');
-		if (!mat || check_arg_format(mat))
+		if (!mat || check_arg_format(mat)
+			|| (argv[1][0] == ' ' && argv[1][1] == '\0'))
 			handle_error_and_free_mat(mat);
 	}
 	else
@@ -41,8 +42,8 @@ char	**get_argument_matrix(char **argv)
 
 void	process_argument_matrix(char **mat, int argc, t_node **stack_a)
 {
-	int	i;
-	int	val;
+	int		i;
+	long	val;
 
 	i = 0;
 	while (mat[i])
@@ -88,7 +89,10 @@ int	main(int argc, char **argv)
 		exit(0);
 	stack_a = NULL;
 	stack_b = NULL;
+	is_argv_null(argv);
 	parse_arguments(argc, argv, &stack_a);
+	if (sorted(&stack_a))
+		exit (0);
 	sort_stack(&stack_a, &stack_b);
 	cleanup(&stack_a, &stack_b);
 	return (0);

@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   push_rules.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kayraakbas <kayraakbas@student.42.fr>      +#+  +:+       +#+        */
+/*   By: omakbas <omakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/10 22:08:05 by kayraakbas        #+#    #+#             */
-/*   Updated: 2025/03/10 22:08:20 by kayraakbas       ###   ########.fr       */
+/*   Created: 2025/03/14 18:32:21 by omakbas           #+#    #+#             */
+/*   Updated: 2025/03/14 18:32:23 by omakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	is_argv_null(char **argv)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (argv[i])
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			if (argv[i][j] >= '0' && argv[i][j] <= '9')
+				break ;
+			if (argv[i][j] == ' ' && !argv[i][j + 1])
+				exit_error("Error");
+			j++;
+		}
+		i++;
+	}
+}
 
 void	push_to(t_node **stack_from, t_node **stack_to)
 {

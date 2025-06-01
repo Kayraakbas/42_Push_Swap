@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kayraakbas <kayraakbas@student.42.fr>      +#+  +:+       +#+        */
+/*   By: omakbas <omakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/10 22:39:55 by kayraakbas        #+#    #+#             */
-/*   Updated: 2025/03/10 22:58:05 by kayraakbas       ###   ########.fr       */
+/*   Created: 2025/03/14 18:32:27 by omakbas           #+#    #+#             */
+/*   Updated: 2025/03/14 18:32:30 by omakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,6 @@ void	free_list(t_node **lst)
 		free(ptr);
 	}
 	*lst = NULL;
-}
-
-void	print_list(t_node *lst)
-{
-	t_node	*ptr;
-
-	ptr = lst;
-	if (lst == NULL)
-	{
-		ft_printf("Empty stack\n");
-		return ;
-	}
-	while (ptr != NULL)
-	{
-		ft_printf("val : %d idx: %d\n", ptr->val, ptr->index);
-		ptr = ptr->next;
-	}
 }
 
 int	ft_lstsize(t_node *head)

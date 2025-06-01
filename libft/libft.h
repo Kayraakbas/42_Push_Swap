@@ -6,7 +6,7 @@
 /*   By: omakbas <omakbas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 21:05:38 by kayraakbas        #+#    #+#             */
-/*   Updated: 2024/10/25 19:43:18 by omakbas          ###   ########.fr       */
+/*   Updated: 2025/03/14 15:14:45 by omakbas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-int				ft_atoi(char *str);
+long			ft_atoi(char *str);
 void			*ft_bzero(void *s, size_t n);
 void			*ft_calloc(size_t count, size_t size);
 int				ft_isalnum(int c);
